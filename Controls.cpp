@@ -1,7 +1,6 @@
 #include "Arduino.h"
 #include "Controls.h"
 #include "math.h"
-#include "Bit.h"
 
 Controls::Controls() {
 
@@ -391,10 +390,11 @@ double Controls::getPercentage(int n) {
 //rgb control
 
 void Controls::Color(int n) {
-	//n: 0-8
-	n & 0x1 ? digitalWrite(led5, HIGH) : digitalWrite(led5, LOW);
-	n & 0x2 ? digitalWrite(led6, HIGH) : digitalWrite(led6, LOW);
-	n & 0x4 ? digitalWrite(led9, HIGH) : digitalWrite(led9, LOW);
+	//n: 0-0xffffff
+	analogWrite(led5, 0xff-((n & 0xff0000) >> 16));	//red
+	analogWrite(led6, 0xff-((n & 0x00ff00) >> 8));	//green
+	analogWrite(led9, 0xff-(n & 0x0000ff));			//blue
+
 }
 
 //private Methods
@@ -455,4 +455,3 @@ void Controls::NA() {
 	LEDon(false);
 	delay(time / 4);
 }
-

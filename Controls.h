@@ -15,7 +15,6 @@ including:
 */
 
 #include "Arduino.h"
-#include "Bit.h"
 
 #define time 500
 #define muxTime 5
