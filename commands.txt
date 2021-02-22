@@ -1,0 +1,81 @@
+Command List;
+
+-----
+
+-setMode(int n);
+switch between the 3 Modes:
+segment		n = 0
+led-line	n = 1
+rgb			n = 2
+
+-----
+
+-LEDon(bool b);
+set ALL LEDs to HI/LO:
+HI			b = true
+LO			b = false
+
+-----
+
+-setLED(char s[]);
+set LEDs manually in a 10-bit binary pattern:
+set LO		s = "0...."
+set HI		s = "1...."
+
+example:
+s = "1001010011"
+led0	HI	(1)
+led1	LO	(0)
+led2	LO	(0)
+led3	HI	(1)
+led4	LO	(0)
+led5	HI	(1)
+led6	LO	(0)
+led7	LO	(0)
+led8	HI	(1)
+led9	HI	(1)
+
+*undefined state handled
+*overflow will be ignored
+
+-----
+
+-getNumber(int n);
+display individual numbers on onboard segment display:
+display n	n = -19 - 19
+
+*unavailable content handled:
+-	non displayable numbers will be replaced with an underscore,
+	which will blink 2 times in an interval of 500ms.
+
+-----
+
+-getLetter(char l);
+display individual characters on onboard segment display:
+display l	l = 'a' - 'z'
+
+*unavailable content handled:
+-	non displayable letters will be replaced with an underscore,
+	which will blink 2 times in an interval of 500ms.
+-	unavailable characters will not be displayed.
+
+-----
+
+-Write(char s[], int length);
+display a custom character sequence in an interval of 500ms*length:
+lenght = sizeof(s);
+
+*unavailable content handled:
+-	non displayable letters will be replaced with an underscore,
+	which will blink 2 times in an interval of 500ms.
+-	unavailable characters will not be displayed.
+
+-----
+
+
+
+
+
+
+
+
