@@ -1,17 +1,6 @@
 /*
-HTL Uno Controls
-including:
-*switching Modes between RGB, LED Line & 10 Segment display...
-*controlling individual LEDs...
-*Multiplexing Modes...
-*controlling character displayment...
-*controlling the LED Line...
-*display poti status...
-*RGB colors...
-
->further information in the command.txt file
-
--GruS
+@author smon
+	3AHEL
 */
 
 #include "Arduino.h"
@@ -56,8 +45,6 @@ public:
 	void LEDon(bool b);
 	void setLED(unsigned long x);
 	
-	void setByte(int n);
-	void setIntByte(int n);
 	void setNumber(int n);
 	void setLetter(char l);
 	void Write(char s[], int length);
@@ -76,7 +63,5 @@ private:
 	
 private:
 	void NA();
-	void Minus(bool b);
-	void Decade(bool b);
 	void setPinModeLed(bool b);
 };

@@ -1,3 +1,8 @@
+/*
+@author smon
+	3AHEL
+*/
+
 #include "Arduino.h"
 #include "Controls.h"
 #include "math.h"
@@ -24,10 +29,8 @@ Controls::Controls() {
 void Controls::setMode(int n) {
 	switch (n) {
 	case(0):
-		pinMode(seg, INPUT);
-		pinMode(line, INPUT);
-		pinMode(rgb, INPUT);
-
+		DDRB &= 0b11100011;
+		
 		pin_active = true;
 		seg_active = false;
 		line_active = false;
@@ -38,9 +41,8 @@ void Controls::setMode(int n) {
 		break;
 	
 	case(1):
-		pinMode(seg, OUTPUT);
-		pinMode(line, INPUT);
-		pinMode(rgb, INPUT);
+		DDRB &= 0b11100011;
+		DDRB |= 0b00000100;
 
 		pin_active = false;
 		seg_active = true;
@@ -53,9 +55,8 @@ void Controls::setMode(int n) {
 
 
 	case(2):
-		pinMode(seg, INPUT);
-		pinMode(line, OUTPUT);
-		pinMode(rgb, INPUT);
+		DDRB &= 0b11100011;
+		DDRB |= 0b00001000;
 
 		pin_active = false;
 		seg_active = false;
@@ -67,9 +68,8 @@ void Controls::setMode(int n) {
 		break;
 
 	case(3):
-		pinMode(seg, INPUT);
-		pinMode(line, INPUT);
-		pinMode(rgb, OUTPUT);
+		DDRB &= 0b11100011;
+		DDRB |= 0b00010000;
 
 		pin_active = false;
 		seg_active = false;
@@ -81,6 +81,15 @@ void Controls::setMode(int n) {
 		break;
 	
 	default:
+		DDRB &= 0b11100011;
+		
+		pin_active = true;
+		seg_active = false;
+		line_active = false;
+		rgb_active = false;
+
+		setPinModeLed(false);
+		
 		break;
 	}
 }
