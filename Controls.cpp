@@ -85,7 +85,7 @@ void Controls::setMode(int n) {
 	}
 }
 
-void Controls::Mux(int n[]) {
+void Controls::Mux(int * n) {
 	for(int i = 0; i < sizeof(n)/sizeof(int); i++) {
 		setMode(n[i]);
 		delay(muxTime);
@@ -95,10 +95,15 @@ void Controls::Mux(int n[]) {
 //overall LED settings
 
 void Controls::setLED(unsigned long x) {
-	
+	unsigned long firstEight = x & 0b0011111111;
+	unsigned long lastTwo = x >> 0x8;
+	PORTB |= 0b00000011;
+	PORTB &= ~lastTwo;
+	PORTD = ~firstEight;
 }
 
-void Controls::LEDon(bool b) {
+void Controls::LEDon(bool b)
+{
 	if (b) {
 		digitalWrite(led0, LOW);
 		digitalWrite(led1, LOW);
@@ -128,134 +133,60 @@ void Controls::LEDon(bool b) {
 
 //Character display
 
-void Controls::setByte(int n) {
-	n & 0x1 ? digitalWrite(led0, LOW) : digitalWrite(led0, HIGH);
-	n & 0x2 ? digitalWrite(led1, LOW) : digitalWrite(led1, HIGH);
-	n & 0x4 ? digitalWrite(led2, LOW) : digitalWrite(led2, HIGH);
-	n & 0x8 ? digitalWrite(led3, LOW) : digitalWrite(led3, HIGH);
-	n & 0x10 ? digitalWrite(led4, LOW) : digitalWrite(led4, HIGH);
-	n & 0x20 ? digitalWrite(led5, LOW) : digitalWrite(led5, HIGH);
-	n & 0x40 ? digitalWrite(led6, LOW) : digitalWrite(led6, HIGH);
-	n & 0x80 ? digitalWrite(led7, LOW) : digitalWrite(led7, HIGH);
-	n & 0x100 ? digitalWrite(led8, LOW) : digitalWrite(led8, HIGH);
-	n & 0x200 ? digitalWrite(led9, LOW) : digitalWrite(led9, HIGH);
+void Controls::setNumber(int n)
+{
+
 }
 
-void Controls::setNumber(int n) {
-
-	// if (n < -19 || n > 19) {
-	// 	NA();
-	// }
-	// else {
-	// 	if (n < 0) {
-	// 		Minus(true);
-	// 		n = abs(n);
-	// 	}
-	// 	else {
-	// 		Minus(false);
-	// 	}
-
-	// 	if (n >= 10) {
-	// 		Decade(true);
-	// 		n = n - 10;
-	// 	}
-	// 	else {
-	// 		Decade(false);
-	// 	}
-
-	// 	switch (n) {
-	// 	case(0):
-	// 		defLED("1111110");
-	// 		break;
-
-	// 	case(1):
-	// 		defLED("0110000");
-	// 		break;
-
-	// 	case(2):
-	// 		defLED("1101101");
-	// 		break;
-
-	// 	case(3):
-	// 		defLED("1111001");
-	// 		break;
-
-	// 	case(4):
-	// 		defLED("0110011");
-	// 		break;
-
-	// 	case(5):
-	// 		defLED("1011011");
-	// 		break;
-
-	// 	case(6):
-	// 		defLED("1011111");
-	// 		break;
-
-	// 	case(7):
-	// 		defLED("1110000");
-	// 		break;
-
-	// 	case(8):
-	// 		defLED("1111111");
-	// 		break;
-
-	// 	case(9):
-	// 		defLED("1111011");
-	// 		break;
-	// 	}
-
-	// }
-}
-
-void Controls::setLetter(char c) {
+void Controls::setLetter(char c)
+{
 	switch (c) {
 	case('a'):
-		setLED(0b1110111000);
+		setLED(0b0001110111);
 		break;
 
 	case('b'):
-		setLED(0b0011111000);
+		setLED(0b0001111100);
 		break;
 
 	case('c'):
-		setLED(0b1001110000);
+		setLED(0b0000111001);
 		break;
 
 	case('d'):
-		setLED(0b0111101000);
+		setLED(0b0001011110);
 		break;
 
 	case('e'):
-		setLED(0b1001111000);
+		setLED(0b0001111001);
 		break;
 
 	case('f'):
-		setLED(0b1000111000);
+		setLED(0b0001110001);
 		break;
 
 	case('g'):
-		setLED(0b1011110000);
+		setLED(0b0000111101);
 		break;
 
 	case('h'):
-		setLED(0b0010111000);
+		setLED(0b0001110100);
 		break;
 
 	case('i'):
-		setLED(0b0000100000);
+		setLED(0b0000010000);
 		break;
 
 	case('j'):
-		setLED(0b0111100000);
+		setLED(0b0000011110);
 		break;
 
 	case('k'):
-		NA();
+		setLED(0b0001110101);
 		break;
 
 	case('l'):
-		setLED(0b0001110000);
+		setLED(0b0000111000);
 		break;
 
 	case('m'):
@@ -263,27 +194,27 @@ void Controls::setLetter(char c) {
 		break;
 
 	case('n'):
-		setLED(0b0010101000);
+		setLED(0b0001010100);
 		break;
 
 	case('o'):
-		setLED(0b0011101000);
+		setLED(0b0001011100);
 		break;
 
 	case('p'):
-		setLED(0b1100111000);
+		setLED(0b0001110011);
 		break;
 
 	case('q'):
-		setLED(0b1110011000);
+		setLED(0b0001100111);
 		break;
 
 	case('r'):
-		setLED(0b0000101000);
+		setLED(0b0001010000);
 		break;
 
 	case('s'):
-		setLED(0b1011011000);
+		setLED(0b0001101101);
 		break;
 
 	case('t'):
@@ -291,11 +222,11 @@ void Controls::setLetter(char c) {
 		break;
 
 	case('u'):
-		setLED(0b0111110000);
+		setLED(0b0000111110);
 		break;
 
 	case('v'):
-		setLED(0b0011100000);
+		setLED(0b0000011100);
 		break;
 
 	case('w'):
@@ -303,15 +234,15 @@ void Controls::setLetter(char c) {
 		break;
 
 	case('x'):
-		setLED(0b0110111000);
+		setLED(0b0001110110);
 		break;
 
 	case('y'):
-		setLED(0b0111011000);
+		setLED(0b0001101110);
 		break;
 
 	case('z'):
-		setLED(0b1101101000);
+		setLED(0b0001011011);
 		break;
 
 	case(' '):
@@ -320,7 +251,8 @@ void Controls::setLetter(char c) {
 	}
 }
 
-void Controls::Write(char s[], int length) {
+void Controls::Write(char s[], int length)
+{
 	for (int i = 0; i < length; i++) {
 		setLetter(s[i]);
 		delay(time);
@@ -329,12 +261,14 @@ void Controls::Write(char s[], int length) {
 
 //poti control
 
-void Controls::showPercentage(int n) {
+void Controls::showPercentage(int n)
+{
 	double val = analogRead(n);
 	double perc = (100 * val) / 1023;
 	int dec = pot_correction + perc / 10;
 
-	if (seg_active) {
+	if (seg_active)
+	{
 		setNumber(dec);
 	}
 
@@ -355,19 +289,19 @@ void Controls::showPercentage(int n) {
 			setLED(0b0000001111);
 		}
 		else if (perc >= 45 && perc < 55) {
-			setLED(0b0000111111);
+			setLED(0b0000011111);
 		}
 		else if (perc >= 55 && perc < 65) {
-			setLED(0b0001111111);
+			setLED(0b0000111111);
 		}
 		else if (perc >= 65 && perc < 75) {
-			setLED(0b0011111111);
+			setLED(0b0001111111);
 		}
 		else if (perc >= 75 && perc < 85) {
-			setLED(0b0111111111);
+			setLED(0b0011111111);
 		}
 		else if (perc >= 85 && perc < 95) {
-			setLED(0b1111111111);
+			setLED(0b0111111111);
 		}
 		else if (perc >= 95) {
 			setLED(0b1111111111);
@@ -375,12 +309,13 @@ void Controls::showPercentage(int n) {
 	}
 
 	else if (rgb_active) {
-		Color(val/128);
+		Color(val*0x3ff);
 	}
 
 }
 
-double Controls::getPercentage(int n) {
+double Controls::getPercentage(int n)
+{
 	double val = analogRead(n);
 	double perc = (100.0 * val) / 1023.0;
 
@@ -389,37 +324,22 @@ double Controls::getPercentage(int n) {
 
 //rgb control
 
-void Controls::Color(int n) {
+void Controls::Color(long n)
+{
 	//n: 0-0xffffff
-	analogWrite(led5, 0xff-((n & 0xff0000) >> 16));	//red
-	analogWrite(led6, 0xff-((n & 0x00ff00) >> 8));	//green
-	analogWrite(led9, 0xff-(n & 0x0000ff));			//blue
+	long r = (n & 0xff0000) >> 0x10;
+	long g = (n & 0x00ff00) >> 0x8;
+	long b = n & 0x0000ff;
 
+	analogWrite(led5, 0xff-r);	//red
+	analogWrite(led6, 0xff-g);	//green
+	analogWrite(led9, 0xff-b);	//blue
 }
 
 //private Methods
 
-void Controls::Minus(bool b) {
-	if (b) {
-		digitalWrite(led8, LOW);
-	}
-	else {
-		digitalWrite(led8, HIGH);
-	}
-}
-
-void Controls::Decade(bool b) {
-	if (b) {
-		digitalWrite(led7, LOW);
-		digitalWrite(led9, LOW);
-	}
-	else {
-		digitalWrite(led7, HIGH);
-		digitalWrite(led9, HIGH);
-	}
-}
-
-void Controls::setPinModeLed(bool b) {
+void Controls::setPinModeLed(bool b)
+{
 	if(b) {
 		pinMode(led0, INPUT);
 		pinMode(led1, INPUT);
@@ -445,7 +365,8 @@ void Controls::setPinModeLed(bool b) {
 	}
 }
 
-void Controls::NA() {
+void Controls::NA()
+{
 	setLED(0001000000);
 	delay(time / 4);
 	LEDon(false);

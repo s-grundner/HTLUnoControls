@@ -65,9 +65,8 @@ public:
 	double getPercentage(int n);
 	void showPercentage(int n);
 
-	void Color(int n);
-
-	void Mux(int n[]);
+	void Color(long n);
+	void Mux(int * n);
 
 private:
 	bool pin_active;
