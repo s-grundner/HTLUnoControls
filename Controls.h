@@ -8,8 +8,6 @@
 #define time 500
 #define muxTime 5
 
-#define pot_correction 0.62
-
 #define led0 0
 #define led1 1
 #define led2 2
@@ -41,16 +39,18 @@ public:
 	Controls();
 
 	void setMode(int n);
+	int getMode();
 
 	void LEDon(bool b);
 	void setLED(unsigned long x);
 	
 	void setNumber(int n);
 	void setLetter(char l);
-	void Write(char s[], int length);
+	void Write(char s[]);
 
-	double getPercentage(int n);
-	void showPercentage(int n);
+	double getPercentageAnalogIn(int n);
+	void showPercentageAnalogIn(int n);
+	void showPan(int n);
 
 	void Color(long n);
 	void Mux(int * n);
