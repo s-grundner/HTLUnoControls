@@ -95,11 +95,11 @@ void Controls::ledOn(bool b)
 {
 	if (b)
 	{
-		setLED(0b1111111111);
+		setLed(0b1111111111);
 	}
 	else
 	{
-		setLED(0b0000000000);
+		setLed(0b0000000000);
 	}
 }
 
@@ -190,11 +190,11 @@ void Controls::setNumber(int n)
 			out = 0b0000111111;
 			break;
 		}
-		setLED(out);
+		setLed(out);
 	}
 	else if (line_active)
 	{
-		setLED(n);
+		setLed(n);
 	}
 }
 
@@ -203,51 +203,51 @@ void Controls::setLetter(char c)
 	switch (c)
 	{
 	case ('a'):
-		setLED(0b0001110111);
+		setLed(0b0001110111);
 		break;
 
 	case ('b'):
-		setLED(0b0001111100);
+		setLed(0b0001111100);
 		break;
 
 	case ('c'):
-		setLED(0b0000111001);
+		setLed(0b0000111001);
 		break;
 
 	case ('d'):
-		setLED(0b0001011110);
+		setLed(0b0001011110);
 		break;
 
 	case ('e'):
-		setLED(0b0001111001);
+		setLed(0b0001111001);
 		break;
 
 	case ('f'):
-		setLED(0b0001110001);
+		setLed(0b0001110001);
 		break;
 
 	case ('g'):
-		setLED(0b0000111101);
+		setLed(0b0000111101);
 		break;
 
 	case ('h'):
-		setLED(0b0001110100);
+		setLed(0b0001110100);
 		break;
 
 	case ('i'):
-		setLED(0b0000010000);
+		setLed(0b0000010000);
 		break;
 
 	case ('j'):
-		setLED(0b0000011110);
+		setLed(0b0000011110);
 		break;
 
 	case ('k'):
-		setLED(0b0001110101);
+		setLed(0b0001110101);
 		break;
 
 	case ('l'):
-		setLED(0b0000111000);
+		setLed(0b0000111000);
 		break;
 
 	case ('m'):
@@ -255,39 +255,39 @@ void Controls::setLetter(char c)
 		break;
 
 	case ('n'):
-		setLED(0b0001010100);
+		setLed(0b0001010100);
 		break;
 
 	case ('o'):
-		setLED(0b0001011100);
+		setLed(0b0001011100);
 		break;
 
 	case ('p'):
-		setLED(0b0001110011);
+		setLed(0b0001110011);
 		break;
 
 	case ('q'):
-		setLED(0b0001100111);
+		setLed(0b0001100111);
 		break;
 
 	case ('r'):
-		setLED(0b0001010000);
+		setLed(0b0001010000);
 		break;
 
 	case ('s'):
-		setLED(0b0001101101);
+		setLed(0b0001101101);
 		break;
 
 	case ('t'):
-		setLED(0b0001111000);
+		setLed(0b0001111000);
 		break;
 
 	case ('u'):
-		setLED(0b0000111110);
+		setLed(0b0000111110);
 		break;
 
 	case ('v'):
-		setLED(0b0000011100);
+		setLed(0b0000011100);
 		break;
 
 	case ('w'):
@@ -295,19 +295,19 @@ void Controls::setLetter(char c)
 		break;
 
 	case ('x'):
-		setLED(0b0001110110);
+		setLed(0b0001110110);
 		break;
 
 	case ('y'):
-		setLED(0b0001101110);
+		setLed(0b0001101110);
 		break;
 
 	case ('z'):
-		setLED(0b0001011011);
+		setLed(0b0001011011);
 		break;
 
 	case (' '):
-		setLED(0b0000000000);
+		setLed(0b0000000000);
 		break;
 	}
 }
@@ -348,47 +348,47 @@ void Controls::showPercentageAnalogIn(int n)
 	{
 		if (perc < 5)
 		{
-			setLED(0b0000000000);
+			setLed(0b0000000000);
 		}
 		else if (perc >= 5 && perc < 15)
 		{
-			setLED(0b0000000001);
+			setLed(0b0000000001);
 		}
 		else if (perc >= 15 && perc < 25)
 		{
-			setLED(0b0000000011);
+			setLed(0b0000000011);
 		}
 		else if (perc >= 25 && perc < 35)
 		{
-			setLED(0b0000000111);
+			setLed(0b0000000111);
 		}
 		else if (perc >= 35 && perc < 45)
 		{
-			setLED(0b0000001111);
+			setLed(0b0000001111);
 		}
 		else if (perc >= 45 && perc < 55)
 		{
-			setLED(0b0000011111);
+			setLed(0b0000011111);
 		}
 		else if (perc >= 55 && perc < 65)
 		{
-			setLED(0b0000111111);
+			setLed(0b0000111111);
 		}
 		else if (perc >= 65 && perc < 75)
 		{
-			setLED(0b0001111111);
+			setLed(0b0001111111);
 		}
 		else if (perc >= 75 && perc < 85)
 		{
-			setLED(0b0011111111);
+			setLed(0b0011111111);
 		}
 		else if (perc >= 85 && perc < 95)
 		{
-			setLED(0b0111111111);
+			setLed(0b0111111111);
 		}
 		else if (perc >= 95)
 		{
-			setLED(0b1111111111);
+			setLed(0b1111111111);
 		}
 	}
 
@@ -416,47 +416,47 @@ void Controls::showPan(int n)
 	{
 		if (perc < -82 )
 		{
-			setLED(0b0000011111);
+			setLed(0b0000011111);
 		}
 		else if (perc >= -82 && perc < -64)
 		{
-			setLED(0b0000011110);
+			setLed(0b0000011110);
 		}
 		else if (perc >= -64 && perc < -46)
 		{
-			setLED(0b0000011100);
+			setLed(0b0000011100);
 		}
 		else if (perc >= -46 && perc < -28)
 		{
-			setLED(0b0000011000);
+			setLed(0b0000011000);
 		}
 		else if (perc >= -28 && perc < -10)
 		{
-			setLED(0b0000010000);
+			setLed(0b0000010000);
 		}
 		else if (perc >= -10 && perc < 10)
 		{
-			setLED(0b0000000000);
+			setLed(0b0000000000);
 		}
 		else if (perc >= 10 && perc < 28)
 		{
-			setLED(0b0000100000);
+			setLed(0b0000100000);
 		}
 		else if (perc >= 28 && perc < 46)
 		{
-			setLED(0b0001100000);
+			setLed(0b0001100000);
 		}
 		else if (perc >= 46 && perc < 64)
 		{
-			setLED(0b0011100000);
+			setLed(0b0011100000);
 		}
 		else if (perc >= 64 && perc < 82)
 		{
-			setLED(0b0111100000);
+			setLed(0b0111100000);
 		}
 		else if (perc >= 82)
 		{
-			setLED(0b1111100000);
+			setLed(0b1111100000);
 		}
 	}
 
@@ -497,12 +497,12 @@ void Controls::setPinModeLed(bool b)
 
 void Controls::NA()
 {
-	setLED(0b0001000000);
+	setLed(0b0001000000);
 	delay(time / 4);
-	LEDon(false);
+	ledOn(false);
 	delay(time / 4);
-	setLED(0b0001000000);
+	setLed(0b0001000000);
 	delay(time / 4);
-	LEDon(false);
+	ledOn(false);
 	delay(time / 4);
 }
