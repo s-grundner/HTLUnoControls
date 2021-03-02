@@ -41,8 +41,8 @@ public:
 	void setMode(int n);
 	int getMode();
 
-	void LEDon(bool b);
-	void setLED(unsigned long x);
+	void ledOn(bool b);
+	void setLed(unsigned long x);
 	
 	void setNumber(int n);
 	void setLetter(char l);

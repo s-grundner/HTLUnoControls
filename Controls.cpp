@@ -82,7 +82,7 @@ void Controls::Mux(int *n)
 
 //overall LED settings
 
-void Controls::setLED(unsigned long x)
+void Controls::setLed(unsigned long x)
 {
 	unsigned long firstEight = x & 0b0011111111;
 	unsigned long lastTwo = x >> 0x8;
@@ -91,7 +91,7 @@ void Controls::setLED(unsigned long x)
 	PORTD = ~firstEight;
 }
 
-void Controls::LEDon(bool b)
+void Controls::ledOn(bool b)
 {
 	if (b)
 	{
