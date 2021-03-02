@@ -38,6 +38,11 @@ class Controls {
 public:
 	Controls();
 
+	void setPins();
+	void setHex(bool b);
+	void setLine(bool b);
+	void setRgb(bool b);
+
 	void setMode(int n);
 	int getMode();
 
@@ -64,4 +69,5 @@ private:
 private:
 	void NA();
 	void setPinModeLed(bool b);
+	void modeAct(int n);
 };

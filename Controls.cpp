@@ -27,57 +27,91 @@ Controls::Controls()
 
 //Pin Settings
 
+void Controls::setPins()
+{
+	setMode(0b000);
+}
+
+void Controls::setHex(bool b)
+{
+	if (b)
+	{
+		setMode(getMode() | 0b001);
+	} else
+	{
+		setMode(getMode() & 0b110);
+	}
+	
+}
+
+void Controls::setLine(bool b)
+{
+	if (b)
+	{
+		setMode(getMode() | 0b010);
+	} else
+	{
+		setMode(getMode() & 0b101);
+	}
+}
+
+void Controls::setRgb(bool b)
+{
+	if (b)
+	{
+		setMode(getMode() | 0b100);
+	} else
+	{
+		setMode(getMode() & 0b011);
+	}
+}
+
 int Controls::getMode()
 {
 	int testDDRmode = ((DDRB & 0b00011100) >> 0x2);
-	switch (testDDRmode)
-	{
-	case 1:
-		pin_active = false;
-		seg_active = true;
-		line_active = false;
-		rgb_active = false;
-		break;
-
-	case 2:
-		pin_active = false;
-		seg_active = false;
-		line_active = true;
-		rgb_active = false;
-		break;
-
-	case 4:
-		pin_active = false;
-		seg_active = false;
-		line_active = false;
-		rgb_active = true;
-		break;
-
-	default:
-		DDRB &= 0b11100011;
-		pin_active = true;
-		seg_active = false;
-		line_active = false;
-		rgb_active = false;
-		break;
-	}
+	modeAct(testDDRmode);
 	return testDDRmode;
 }
 
 void Controls::setMode(int n)
 {
-	n = n << 0x2;
+	n = (n << 0x2) | 0b11;
 	DDRB &= 0b11100011;
 	DDRB |= n;
+	getMode();
 }
 
-void Controls::Mux(int *n)
+void Controls::modeAct(int n)
 {
-	for (int i = 0; i < sizeof(n) / sizeof(int); i++)
+	if ((n & 0b001))
 	{
-		setMode(n[i]);
-		delay(muxTime);
+		seg_active = true;
+	} else
+	{
+		seg_active = false;
 	}
+
+	if ((n & 0b010) >> 1)
+	{
+		line_active = true;
+	} else
+	{
+		line_active = false;
+	}
+
+	if (n >> 2)
+	{
+		rgb_active = true;
+	} else
+	{
+		rgb_active = false;
+	}
+	
+}
+
+void Controls::Mux(int n[])
+{
+
 }
 
 //overall LED settings
@@ -325,7 +359,7 @@ void Controls::setLetter(char c)
 double Controls::getPercentageAnalogIn(int n)
 {
 	float val = analogRead(n);
-	float perc = val / 0x3ff;
+	float perc = val / 1024;
 
 	return perc;
 }
@@ -335,7 +369,7 @@ void Controls::showPercentageAnalogIn(int n)
 	getMode();
 
 	float read = analogRead(n);
-	float val = read / 0x3ff;
+	float val = read / 1024;
 	float perc = val * 100;
 	int dec = round(perc / 10);
 
@@ -403,7 +437,7 @@ void Controls::showPan(int n)
 	getMode();
 
 	float read = analogRead(n);
-	float val = (2 * read / 0x3ff) - 1;
+	float val = (2 * read / 1024) - 1;
 	float perc = val * 100;
 	int dec = round(perc / 10);
 
