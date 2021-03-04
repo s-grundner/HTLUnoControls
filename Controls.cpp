@@ -346,7 +346,7 @@ void Controls::setLetter(char c)
 // }
 
 //poti control
-double Controls::getPercentageAnalogIn(int n)
+float Controls::getPercentageAnalogIn(int n)
 {
 	float val = analogRead(n);
 	float perc = val / 1024;
