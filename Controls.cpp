@@ -9,7 +9,6 @@
 
 Controls::Controls()
 {
-
 	pin_active = true;
 	seg_active = false;
 	line_active = false;

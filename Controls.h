@@ -3,6 +3,8 @@
 	3AHEL
 */
 
+#pragma once
+
 #include "Arduino.h"
 
 #define time 500
