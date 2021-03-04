@@ -13,7 +13,7 @@
 | void setRgb(bool b)                    |set output to rgb-led|
 | void setMode(int n)                    |input a 3-bit binary value referring to the corresponding DDR bits of the Onboard Control pins 12 11 10|
 | void ledOn(bool b)                     |outputs HI on true and LO on false at pins 0-9|
-| void setLed(unsigned long x)           |outputs HI or LO on pins 0-9 according to the user 10-bit binary input. I.e.: setLed(0b000011111) led 0-4 are HI led 5-9 are LO|
+| void setLed(unsigned long x)           |outputs HI or LO on pins 0-9 according to the user 10-bit binary input. I.e.: setLed(0b0000011111) led 0-4 are HI led 5-9 are LO|
 | void setNumber(int n)                  |displays a hex number from -31 to 31 if hex display is active or a 10-bit binary number if the led line is active|
 | void setLetter(char l)                 |displays alphabetic characters on hex display|
 | void Write(char s[])                   |_not yet implemented_|
