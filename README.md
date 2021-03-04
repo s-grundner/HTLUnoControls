@@ -1,4 +1,4 @@
 # HTLUnoControls
 ## Arduino Ports:
-![alt text][ports]
-[ports]: (C:\Users\Smon\prog_ws\arduinomon\libraries\HTLUnoControls\README.md)
+
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
