@@ -55,7 +55,7 @@ public:
 	void setLetter(char l); 		//displays alphabet character on hex display
 	void Write(char s[]);			//not yet implemented
 
-	double getPercentageAnalogIn(int n);	//reads analog input-pin and returns the percentage of the applied voltage while 5V are 100%
+	float getPercentageAnalogIn(int n);	//reads analog input-pin and returns the percentage of the applied voltage while 5V are 100%
 	void showPercentageAnalogIn(int n);	//reads analog input-pin and displays it on the in decades, if the hex display is active, or indicates the percentage on the led-bar if the led-bar is active
 	void showPan(int n);
 
