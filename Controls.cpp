@@ -8,20 +8,11 @@
 #include "math.h"
 
 Controls::Controls()
-{
-	pin_active = true;
-	seg_active = false;
-	line_active = false;
-	rgb_active = false;
+{	
+	setMode(0b000);				//default output on pins
 
-	pinMode(seg, INPUT);
-	pinMode(line, INPUT);
-	pinMode(rgb, INPUT);
-
-	setPinModeLed(false);
+	setPinModeLed(false);		//defines pins 0-9 to output
 	getMode();
-
-	digitalWrite(led0, HIGH);
 }
 
 //Pin Settings
@@ -65,7 +56,7 @@ void Controls::setRgb(bool b)
 	}
 }
 
-int Controls::getMode()
+int Controls::getMode()		
 {
 	int testDDRmode = ((DDRB & 0b00011100) >> 0x2);
 	modeAct(testDDRmode);
@@ -516,12 +507,12 @@ void Controls::Color(long n)
 
 void Controls::setPinModeLed(bool b)
 {
-	if (b)
+	if (b)	//sets all pins to input
 	{
 		DDRD = 0b00000000;
 		DDRB &= 0b11111100;
 	}
-	else
+	else	//sets all leds to output
 	{
 		DDRD = 0b11111111;
 		DDRB &= 0b00000011;
