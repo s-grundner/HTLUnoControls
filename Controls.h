@@ -59,8 +59,14 @@ public:
 	void showPercentageAnalogIn(int n);	//reads analog input-pin and displays it on the in decades, if the hex display is active, or indicates the percentage on the led-bar if the led-bar is active
 	void showPan(int n);
 
-	void Color(long n);			//input RGB-hex value in hex
-	void Mux(int * n);			//not yet implemented
+	void color(long n);			//input RGB-hex value in hex
+	void color(int r, int g, int b);	
+	void mux(int * n);			//not yet 
+
+	bool getPinState();
+	bool getHexState();
+	bool getLineState();
+	bool getRgbState();
 
 private:
 	bool pin_active;

@@ -56,6 +56,26 @@ void Controls::setRgb(bool b)
 	}
 }
 
+bool Controls::getPinState()
+{
+	return pin_active;
+}
+
+bool Controls::getHexState()
+{
+	return seg_active;
+}
+
+bool Controls::getLineState()
+{
+	return line_active;
+}
+
+bool Controls::getRgbState()
+{
+	return rgb_active;
+}
+
 int Controls::getMode()		
 {
 	int testDDRmode = ((DDRB & 0b00011100) >> 0x2);
@@ -99,7 +119,7 @@ void Controls::modeAct(int n)
 	
 }
 
-void Controls::Mux(int n[])
+void Controls::mux(int n[])
 {
 
 }
@@ -418,7 +438,7 @@ void Controls::showPercentageAnalogIn(int n)
 
 	else if (rgb_active)
 	{
-		Color(val * 0xffffff);
+		color(val * 0xffffff);
 	}
 }
 
@@ -486,12 +506,12 @@ void Controls::showPan(int n)
 
 	else if (rgb_active)
 	{
-		Color(val * 0xffffff);
+		color(val * 0xffffff);
 	}
 }
 //rgb control
 
-void Controls::Color(long n)
+void Controls::color(long n)
 {
 	//n: 0-0xffffff
 	long r = (n & 0xff0000) >> 0x10;
@@ -503,6 +523,12 @@ void Controls::Color(long n)
 	analogWrite(led9, 0xff - b); //blue
 }
 
+void Controls::color(int r, int g, int b)
+{
+	analogWrite(led5, 0xff - r); //red
+	analogWrite(led6, 0xff - g); //green
+	analogWrite(led9, 0xff - b); //blue
+}
 //private Methods
 
 void Controls::setPinModeLed(bool b)
