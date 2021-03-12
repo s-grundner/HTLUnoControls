@@ -295,7 +295,7 @@ void Controls::setLetter(char c)
 		break;
 
 	case ('m'):
-		NA();
+		na();
 		break;
 
 	case ('n'):
@@ -356,7 +356,7 @@ void Controls::setLetter(char c)
 	}
 }
 
-// void Controls::Write(char s[])
+// void Controls::write(char s[])
 // {
 // 	for (int i = 0; i < sizeof(s) / sizeof(char); i++)
 // 	{
@@ -545,7 +545,7 @@ void Controls::setPinModeLed(bool b)
 	}
 }
 
-void Controls::NA()
+void Controls::na()
 {
 	setLed(0b0001000000);
 	delay(time / 4);

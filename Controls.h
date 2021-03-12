@@ -53,7 +53,7 @@ public:
 	
 	void setNumber(int n);			//displays a hex number from -31 to 31 if hex display is active or a 10-bit binary number if the led line is active
 	void setLetter(char l); 		//displays alphabet character on hex display
-	void Write(char s[]);			//not yet implemented
+	void write(char s[]);			//not yet implemented
 
 	float getPercentageAnalogIn(int n);	//reads analog input-pin and returns the percentage of the applied voltage while 5V are 100%
 	void showPercentageAnalogIn(int n);	//reads analog input-pin and displays it on the in decades, if the hex display is active, or indicates the percentage on the led-bar if the led-bar is active
@@ -75,7 +75,7 @@ private:
 	bool rgb_active;
 	
 private:
-	void NA();
+	void na();
 	void setPinModeLed(bool b);
 	void modeAct(int n);
 };
