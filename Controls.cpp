@@ -335,7 +335,7 @@ void Controls::setLetter(char c)
 		break;
 
 	case ('w'):
-		NA();
+		na();
 		break;
 
 	case ('x'):
