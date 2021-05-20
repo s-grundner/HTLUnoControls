@@ -49,7 +49,7 @@ public:
 	int getMode();				//returns a 3-bit value which is cut out from the DDR onboard-control section e.i.: getMode(0b000 000 00) the 3 standalone bits equals the return value
 
 	void ledOn(bool b);			//outputs HI on pins 0-9
-	void setLed(unsigned long x);		//outputs HI or LO on pins 0-9 according to the user 10-bit binary input e.i.: setLed(0b000011111) led 0-4 are HI led 5-9 are LO
+	void setOut(unsigned long x);		//outputs HI or LO on pins 0-9 according to the user 10-bit binary input e.i.: setLed(0b000011111) led 0-4 are HI led 5-9 are LO
 	
 	void setNumber(int n);			//displays a hex number from -31 to 31 if hex display is active or a 10-bit binary number if the led line is active
 	void setLetter(char l); 		//displays alphabet character on hex display
@@ -76,6 +76,7 @@ private:
 	
 private:
 	void na();
-	void setPinModeLed(bool b);
+	void setPinMode(bool b);
 	void modeAct(int n);
+
 };
