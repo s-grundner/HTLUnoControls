@@ -360,9 +360,9 @@ void Controls::setLetter(char c)
 	}
 }
 
-void Controls::write(char s[])
+void Controls::write(char *, int len)
 {
-	for (int i = 0; i < strlen(s); i++)
+	for (int i = 0; i < len; i++)
 	{
 		setLetter(s[i]);
 		delay(time);
@@ -533,7 +533,8 @@ void Controls::color(int r, int g, int b)
 	analogWrite(led6, 0xff - g); //green
 	analogWrite(led9, 0xff - b); //blue
 }
-//private Methods
+// ------------------------------
+// private Methods
 
 void Controls::setPinMode(bool b)
 {
