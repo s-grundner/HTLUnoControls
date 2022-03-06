@@ -8,7 +8,7 @@
 | Methods||
 |:------------------------------------------|:---|
 | void setPins()                            |set IO to pins|
-| void setHex(bool-b)                       |set output to hex display|
+| void setHex(bool b)                       |set output to hex display|
 | void setLine(bool b)                      |set output to led-line|
 | void setRgb(bool b)                       |set output to rgb-led|
 | void setMode(int n)                       |input a 3-bit binary value referring to the corresponding DDR bits of the Onboard Control pins 12 11 10|
